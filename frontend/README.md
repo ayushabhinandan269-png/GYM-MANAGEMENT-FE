@@ -1,73 +1,188 @@
-# React + TypeScript + Vite
+🏋️ Gym Management System – Frontend--------------------------------------------------------
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+LIVE LINK - https://gym-management-fe-orcin.vercel.app/
 
-Currently, two official plugins are available:
+A modern Gym Management System frontend built using React + TypeScript, designed for managing members, trainers, workouts, and plans with a clean and scalable architecture.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🚀 Features
+👨‍💼 Admin Features-----------------------------------------------------------
 
-## React Compiler
+Manage Members (Add, Update, Delete)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Manage Trainers
 
-## Expanding the ESLint configuration
+Create & Manage Membership Plans
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Assign Workouts to Members
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Dashboard with insights & activity feed
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+🧑‍💻 Member Features
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+View Personal Dashboard
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Today's Workout Plan
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Track Workout Progress
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+View Membership Plans
+
+Nutrition Guidance
+
+Profile Management
+
+⚙️ Core Functionalities--------------------------------------------------------------
+
+Authentication & Protected Routes
+
+Role-based Access (Admin / Member)
+
+Activity Logging System
+
+API Integration with Backend
+
+Reusable Components & Modular Design
+
+🏗️ Tech Stack
+
+⚛️ React (Vite)
+
+🟦 TypeScript
+
+🎨 CSS (Custom Styling)
+
+🔄 Axios (API Calls)
+
+🧠 Context API + Redux Toolkit
+
+🔐 JWT Authentication
+
+
+src/
+│
+├── api/                # API service layer (Axios calls)
+│   ├── authAPI.ts
+│   ├── memberAPI.ts
+│   ├── trainerAPI.ts
+│   ├── planAPI.ts
+│   ├── workoutAPI.ts
+│   └── nutritionAPI.ts
+│
+├── components/         # Reusable UI components
+│   ├── Navbar.tsx
+│   ├── PlanCard.tsx
+│   ├── ProtectedRoute.tsx
+│   ├── ActivityFeed.tsx
+│   ├── WeeklySummary.tsx
+│   ├── WorkoutChart.tsx
+│   └── WorkoutProgress.tsx
+│
+├── context/            # Global state using Context API
+│   ├── AuthContext.tsx
+│   └── ActivityContext.tsx
+│
+├── features/           # Feature-based modules
+│   ├── admin/
+│   │   ├── AdminDashboard.tsx
+│   │   ├── ManageMembers.tsx
+│   │   ├── ManageTrainers.tsx
+│   │   ├── ManagePlans.tsx
+│   │   └── ManageWorkouts.tsx
+│   │
+│   └── member/
+│       ├── MemberDashboard.tsx
+│       ├── MyPlan.tsx
+│       ├── NutritionPage.tsx
+│       ├── Profile.tsx
+│       └── WorkoutsPage.tsx
+│
+├── hooks/              # Custom hooks
+│   ├── useActivity.ts
+│   └── useSocket.ts
+│
+├── layouts/            # Layout components
+│   ├── MainLayout.tsx
+│   └── DashboardLayout.tsx
+│
+├── pages/              # Route-level pages
+│   ├── Home.tsx
+│   ├── Login.tsx
+│   ├── Register.tsx
+│   ├── Plans.tsx
+│   └── PlanPreview.tsx
+│
+├── redux/              # Redux store
+│   ├── store.ts
+│   └── slices/authSlice.ts
+│
+├── routes/             # Routing configuration
+│   ├── AppRoutes.tsx
+│   └── RoleRoute.tsx
+│
+├── types/              # TypeScript types
+│   └── member.ts
+│
+├── utils/              # Utility functions
+│   ├── activityLogger.ts
+│   └── pageTracker.ts
+│
+├── App.tsx
+├── main.tsx
+└── index.css
+
+
+# Clone the repo
+git clone https://github.com/your-username/gym-management-system.git
+
+# Navigate to frontend
+cd gym-management-system-frontend/frontend
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+🔐 Authentication Flow---------------------
+
+JWT-based authentication
+
+Token stored securely (localStorage/context)
+
+Protected routes using ProtectedRoute.tsx
+
+Role-based routing with RoleRoute.tsx
+
+📊 Activity Logging------------------------
+
+The system tracks key actions:
+
+Trainer created
+
+Plan added
+
+Workout assigned
+
+Member activity
+
+Handled via:
+
+utils/activityLogger.ts
+context/ActivityContext.tsx
+📈 Future Improvements----------------------
+
+AI-based workout recommendations
+
+Real-time notifications (WebSockets)
+
+Advanced analytics dashboard
+
+Mobile responsive enhancements
+
+🤝 Contributing-------------------------
+
+Feel free to fork this repo and contribute 🚀
+
+📜 License--------------------------------
+
+This project is licensed under the MIT License.
