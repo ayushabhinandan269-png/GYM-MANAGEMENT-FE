@@ -1,4 +1,4 @@
-import { Outlet, Link, useLocation } from "react-router-dom";
+import { Outlet, Link, useLocation,useNavigate } from "react-router-dom";
 import { useEffect, useRef } from "react";
 import { trackPageVisit } from "../utils/pageTracker";
 
@@ -35,12 +35,12 @@ const DashboardLayout = () => {
   }, [location.pathname]);
 
   /* ---------------- LOGOUT FUNCTION ---------------- */
-
+  const navigate = useNavigate();
   const logout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("role");
 
-    window.location.href = "/login";
+    navigate("/login");
   };
 
   /* ---------------- ACTIVE LINK STYLE ---------------- */
