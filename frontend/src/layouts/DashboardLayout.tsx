@@ -1,4 +1,4 @@
-import { Outlet, Link, useLocation, useNavigate } from "react-router-dom";
+import { Outlet, Link, useLocation } from "react-router-dom";
 import { useEffect, useRef } from "react";
 import { trackPageVisit } from "../utils/pageTracker";
 
@@ -17,25 +17,17 @@ import {
 const DashboardLayout = () => {
 
   const location = useLocation();
-  const navigate = useNavigate();
   const role = localStorage.getItem("role");
-  const token = localStorage.getItem("token");
 
   const firstLoad = useRef(true);
-
-  /* ---------------- TOKEN CHECK ---------------- */
-
-  if (!token) {
-    return null;
-  }
 
   /* ---------------- PAGE ACTIVITY TRACKING ---------------- */
 
   useEffect(() => {
 
+    
     if (firstLoad.current) {
       firstLoad.current = false;
-      return;
     }
 
     trackPageVisit(location.pathname);
@@ -47,8 +39,7 @@ const DashboardLayout = () => {
   const logout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("role");
-
-    navigate("/login", { replace: true }); // 🔥 FIXED
+    window.location.href = "/login";
   };
 
   /* ---------------- ACTIVE LINK STYLE ---------------- */
@@ -100,6 +91,7 @@ const DashboardLayout = () => {
                   Workouts
                 </Link>
 
+              
                 <Link to="/dashboard/nutrition" className={linkClass("/dashboard/nutrition")}>
                   <Apple size={18}/>
                   Nutrition
