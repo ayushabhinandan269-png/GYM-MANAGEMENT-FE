@@ -4,6 +4,16 @@ LIVE LINK - https://gym-management-fe-orcin.vercel.app/
 
 A modern Gym Management System frontend built using React + TypeScript, designed for managing members, trainers, workouts, and plans with a clean and scalable architecture.
 
+👤 Admin Access 
+
+To simplify initial usage and testing, an admin user has been inserted into the database.
+
+🔐 Admin Login Credentials
+
+Email: admin@gym.com
+
+Password: admin123
+
 🚀 Features
 👨‍💼 Admin Features-----------------------------------------------------------
 
